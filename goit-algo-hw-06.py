@@ -6,25 +6,25 @@ from collections import deque
 
 
 
+
+
+
+nodes = ["A", "B", "C", "D", "E", "F"]
 G = nx.Graph()
-stations = ["A", "B", "C", "D", "E", "F"]
-edges = [
-    ("A", "B"), ("B", "C"), ("C", "D"),
-    ("A", "E"), ("E", "F"), ("F", "D"),
-    ("B", "E")
-]
-# G.add_nodes_from(stations)
-# G.add_edges_from(edges)
+# G.add_nodes_from(nodes)
+# for a in nodes:
+#     for b in nodes:
+#         if a < b and random.random() < 0.45:
+#             G.add_edge(a, b)
 # plt.figure(figsize=(6, 4))
-# pos = nx.spring_layout(G)
-# nx.draw(G, pos, with_labels=True, node_size=700, node_color="skyblue", font_size=12)
-# plt.title("City Transport Network")
+# pos = nx.spring_layout(G, seed=7)
+# nx.draw(G, pos, with_labels=True, node_size=700)
 # plt.show()
-# print("Number of nodes:", G.number_of_nodes())
-# print("Number of edges:", G.number_of_edges())
-# print("\nDegrees of nodes:")
-# for node, degree in G.degree():
-#     print(f"{node}: {degree}")
+# print("Nodes:", len(G.nodes()))
+# print("Edges:", len(G.edges()))
+# print("Degrees:")
+# for n, d in G.degree():
+#     print(n, d)
 
 
 
@@ -33,39 +33,33 @@ edges = [
 
 
 
+# def bfs(G, s, g):
+#     q = deque([[s]])
+#     seen = {s}
+#     while q:
+#         p = q.popleft()
+#         v = p[-1]
+#         if v == g:
+#             return p
+#         for x in G[v]:
+#             if x not in seen:
+#                 seen.add(x)
+#                 q.append(p + [x])
+# def dfs(G, s, g):
+#     st = [[s]]
+#     seen = {s}
+#     while st:
+#         p = st.pop()
+#         v = p[-1]
+#         if v == g:
+#             return p
+#         for x in G[v]:
+#             if x not in seen:
+#                 seen.add(x)
+#                 st.append(p + [x])
 
-
-
-
-
-# def bfs(G, start, goal):
-#     visited = set([start])
-#     queue = deque([[start]])
-#     while queue:
-#         path = queue.popleft()
-#         node = path[-1]
-#         if node == goal:
-#             return path
-#         for neighbor in G.neighbors(node):
-#             if neighbor not in visited:
-#                 visited.add(neighbor)
-#                 queue.append(path + [neighbor])
-# def dfs(G, start, goal):
-#     visited = set([start])
-#     stack = [[start]]
-#     while stack:
-#         path = stack.pop()
-#         node = path[-1]
-#         if node == goal:
-#             return path
-#         for neighbor in G.neighbors(node):
-#             if neighbor not in visited:
-#                 visited.add(neighbor)
-#                 stack.append(path + [neighbor])
-# bfs_path = bfs(G, "A", "D")
-# dfs_path = dfs(G, "A", "D")
-# print("BFS path from A to D:", bfs_path)
-# print("DFS path from A to D:", dfs_path)
+# print("BFS A→D:", bfs(G, "A", "D"))
+# print("DFS A→D:", dfs(G, "A", "D"))
 
 
 
@@ -73,23 +67,10 @@ edges = [
 
 
 
-
-
-
-
-
-
-
-for u, v in edges:
-    weight = random.randint(1, 10)
-    G.add_edge(u, v, weight=weight)
-dijkstra_paths = dict(nx.all_pairs_dijkstra_path(G))
-dijkstra_lengths = dict(nx.all_pairs_dijkstra_path_length(G))
-print("\nDijkstra shortest paths:")
-for start, targets in dijkstra_paths.items():
-    for end, path in targets.items():
-        print(f"{start} → {end}: {path}")
-print("\nDijkstra path lengths (total weights):")
-for start, targets in dijkstra_lengths.items():
-    for end, length in targets.items():
-        print(f"{start} → {end}: {length}")
+# for u, v in G.edges():
+#     G[u][v]['weight'] = random.randint(1, 15)
+# paths = dict(nx.all_pairs_dijkstra_path(G))
+# dist = dict(nx.all_pairs_dijkstra_path_length(G))
+# for a in paths:
+#     for b in paths[a]:
+#         print(a, "→", b, ":", paths[a][b], " cost:", dist[a][b])
