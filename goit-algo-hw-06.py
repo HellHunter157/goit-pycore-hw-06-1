@@ -7,7 +7,7 @@ from collections import deque
 
 
 
-
+#перше завдання
 
 nodes = ["A", "B", "C", "D", "E", "F"]
 G = nx.Graph()
@@ -31,7 +31,7 @@ G = nx.Graph()
 
 
 
-
+#друге завдання
 
 # def bfs(G, s, g):
 #     q = deque([[s]])
@@ -64,7 +64,7 @@ G = nx.Graph()
 
 
 
-
+#третє завдання
 
 
 # for u, v in G.edges():
@@ -74,3 +74,4 @@ G = nx.Graph()
 # for a in paths:
 #     for b in paths[a]:
 #         print(a, "→", b, ":", paths[a][b], " cost:", dist[a][b])
+
